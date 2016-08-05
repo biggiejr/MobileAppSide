@@ -10,13 +10,19 @@ import java.io.IOException;
  * Created by Mato on 05.08.16.
  */
 
-class ConnectionProvider {
+public class ConnectionProvider {
+
+    //probably good idea to move
     private static final String ACCESS_TOKEN = "gJpuKawxsWAAAAAAAAAADe0xYvAPkuyAKIGvIS9lKStlkgS9sV842K3cFZ0YYoR8";
+    private DbxClientV2 client;
+
 
     public void provideAuthorization() throws DbxException, IOException {
         DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial", "en_US");
-        DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
+        client = new DbxClientV2(config, ACCESS_TOKEN);
     }
+
+
 
     /*public static void main(String[] args) {
 
@@ -31,5 +37,7 @@ class ConnectionProvider {
 
     }*/
 
-
+    public DbxClientV2 getClientV2(){
+        return client;
+    }
 }
