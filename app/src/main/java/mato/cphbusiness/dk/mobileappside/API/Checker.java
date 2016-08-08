@@ -3,7 +3,6 @@ package mato.cphbusiness.dk.mobileappside.API;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -34,8 +33,8 @@ public abstract class Checker extends Context {
         Collection<String> original = new ArrayList(old);
         Collection<String> updated = new ArrayList(current);
 
-        List<String> toDelete = new ArrayList<String>(original);
-        List<String> toDownload = new ArrayList<String>(updated);
+        List<String> toDelete = new ArrayList<>(original);
+        List<String> toDownload = new ArrayList<>(updated);
 
         toDelete.removeAll(updated);
         toDownload.removeAll(original);
