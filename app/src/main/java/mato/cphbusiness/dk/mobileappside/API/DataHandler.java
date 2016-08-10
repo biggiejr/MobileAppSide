@@ -7,6 +7,8 @@ import java.util.ArrayList;
  */
 class DataHandler {
 
+    Downloader down;
+
     private static ArrayList<String> currentFileList; //should be compared with a list from internall storage
     private ArrayList<String> oldFileList;
 
@@ -15,6 +17,9 @@ class DataHandler {
     }
 
     public void setFiles(ArrayList<String> files) {
+
         this.currentFileList = files;
+        //starting thread to actually download files
+
     }
 }

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 class FileLister extends AsyncTask<String, ArrayList<String>, ArrayList<String>> {
 
     static DataHandler dh = new DataHandler();
+    Downloader down;
     ArrayList<String> files;
     ConnectionProvider con = new ConnectionProvider();
     DbxClientV2 client = con.getClientV2();    //access token
@@ -55,8 +56,17 @@ class FileLister extends AsyncTask<String, ArrayList<String>, ArrayList<String>>
     //returns arraylist with a list of files in a root folder
     //saved in array of data handler class
     @Override
-    protected void onPostExecute(ArrayList<String> result) {
-        dh.setFiles(files);
+    protected void onPostExecute(DbxClientV2 client, ArrayList<String> result) {
+
+
+        for (int i=0;i<result.size(); i++) {
+            down = new Downloader(client,result.get(i));
+            Thread t = new Thread(down);
+            t.start();
+        }
+
+
+        dh.setFiles(result);
     }
 
 
